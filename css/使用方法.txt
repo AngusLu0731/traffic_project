@@ -1,0 +1,9 @@
+Vscode 擴充 下載 watch sass 套件
+
+開啟Index.scss檔案
+
+最下方狀態列 點擊 Watch Sass
+
+記得確認 html <link:css> 路徑是否正確
+
+ 

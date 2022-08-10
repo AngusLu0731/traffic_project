@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/Index.css' %}">
+    <title>交通通</title>
+</head>
+<body class="I-body">
+    <div class="I-header">
+        <h1><a href="/index">&#128664 交 通 通</a></h1>
+        <ul class="I-option">
+            <li><a href="/member">會員中心</a></li>
+            <li><a href="/edit">編輯點位</a></li>
+            <li><a href="/search">現有點位</a></li>
+            <li><a href="#">交通通</a></li>
+        </ul>
+    </div>
+    <div class="I-content">
+        <div class="I-banner">
+            <div class="I-title">
+                <h2>交通通</h2>
+                <p>共同打造你我的交通安全</p>
+                <button>開始使用</button>
+            </div>
+        </div>
+        <div class="I-product">   
+            <h2>功能特色</h2>
+            <ul>
+                <li class="p1">
+                    <div class="item ">
+                        <img src="/static/img/I_typing.jpg" >
+                        <div class="I-text">
+                            <h4>&#128240編輯點位</h4>
+                            <div class="I-p">
+                                <p>一起為交通安全<br>盡一份心力！</p>
+                            </div>
+                        </div>
+                    </div> 
+                </li>
+                <li class="p2">
+                    <div class="item ">
+                        <img src="/static/img/I_google.jpg" >
+                        <div class="I-text">
+                            <h4>&#127759整合地圖</h4>
+                            <div class="I-p">
+                                <p>行車必備交通資訊<br>一把罩！</p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="p3">
+                    <div class="item ">
+                        <img src="/static/img/I_talking.jpg" >
+                        <div class="I-text">
+                            <h4>&#128172意見回饋</h4>
+                            <div  class="I-p">
+                                <p>讓我們知道你的想法<br>持續進步！</p>
+                            </div>
+                            
+                        </div>  
+                    </div>
+                </li>
+            </ul>     
+        </div>
+        <div class="I-bulletin">
+            <div class="I-bulletin1">
+                <h3> &#128526使用者回饋</h3>
+                <form>
+                    <ul>
+                        <li>  {{ mes1.message }}  </li>
+                        <li>  {{ mes2.message }}  </li>
+                        <li>  {{ mes3.message }}  </li>
+                        <li>  {{ mes4.message }}  </li>
+                        <li>  {{ mes5.message }}  </li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="I-footer">
+        <div class="I-footer1">
+            <h1>聯絡我們</h1>
+            <ul class="I-contact">
+                <li ><a class="IG" href="https://www.instagram.com/">IG</a></li>
+                <li ><a class="FB" href="https://zh-tw.facebook.com/">FB</a></li>
+                <li  class="EM">Trafflow@gmail.com</li>
+            </ul>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+</body>
+</html>

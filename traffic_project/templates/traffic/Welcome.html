@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/Index.css' %}">
+    <title>歡迎</title>
+</head>
+{% block content %}
+<body class="w-body">
+    <div class="w-content">
+        <h1>
+            &#128406 Welcome
+        </h1>
+        <div class="w-content1">
+            <div class="w-content2">
+                <form class="w-enroll" method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                </form>
+            </div>      
+            <div class="w-content3">
+                <p ><input class="w-login" type="submit" value="登入"></p>
+                <p class="w-noACC"><a href="/enroll">註冊</a></p>  
+            </div>
+        </div>
+        
+    </div>
+    
+</body>
+{% endblock %}
+</html>

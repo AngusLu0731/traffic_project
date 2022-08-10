@@ -1,0 +1,377 @@
+@charset "UTF-8";
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+:root {
+  --back-color:gainsboro;
+  --div1-color:#8F8681;
+  --div2-color:#A67F78;
+  --div3-color:#32435F;
+}
+
+/******Welcome*******/
+.w-body {
+  background-color: var(--back-color);
+}
+.w-body .w-content {
+  padding-top: 200px;
+}
+.w-body .w-content h1 {
+  text-align: center;
+}
+.w-body .w-content .w-content1 {
+  color: var(--back-color);
+  margin: 0 auto;
+  padding: 10px;
+  width: 50%;
+  border: 2px solid black;
+  box-shadow: 5px 5px black;
+  border-radius: 50% 20%/10% 40%;
+  background-color: var(--div3-color);
+}
+.w-body .w-content .w-content1 .w-enroll {
+  text-align: center;
+}
+
+/******enroll*******/
+.e-body {
+  background-color: var(--back-color);
+}
+.e-body .e-content {
+  padding-top: 200px;
+}
+.e-body .e-content h1 {
+  text-align: center;
+}
+.e-body .e-content .e-content1 {
+  margin: 0 auto;
+  padding: 10px;
+  width: 50%;
+  border: 2px solid black;
+  border-radius: 25px;
+  background-color: var(--div2-color);
+  box-shadow: 5px 5px;
+}
+.e-body .e-content .e-content1 h1 {
+  text-align: center;
+}
+.e-body .e-content .e-content1 .e-info {
+  text-align: center;
+}
+
+/******enroll-successfully*******/
+/******enroll-failly*******/
+/******Index*******/
+.I-body {
+  background-color: var(--back-color);
+}
+.I-body .I-header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: var(--div1-color);
+  border-bottom: 2px solid black;
+  border-style: dashed;
+  /******固定表頭*******/
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  z-index: 100;
+}
+@media (max-width: 376px) {
+  .I-body .I-header {
+    justify-content: center;
+  }
+}
+.I-body .I-header h1 a {
+  font-weight: bold;
+  display: block;
+  color: black;
+  font-size: 32px;
+}
+@media (max-width: 376px) {
+  .I-body .I-header h1 a {
+    display: none;
+  }
+}
+.I-body .I-header h1 a:hover {
+  color: darkgray;
+}
+.I-body .I-header .I-option {
+  display: flex;
+}
+.I-body .I-header .I-option li {
+  margin: 10px;
+}
+.I-body .I-header .I-option li a {
+  font-weight: bold;
+  display: block;
+  color: black;
+}
+.I-body .I-header .I-option li a:hover {
+  color: darkgray;
+}
+.I-body .I-content {
+  padding-top: 50px;
+  padding-bottom: 70px;
+}
+.I-body .I-content .I-banner {
+  width: 95%;
+  height: 500px;
+  margin: 0 auto;
+  position: relative;
+  background-color: var(--div2-color);
+  border: 2px solid black;
+  border-radius: 20px;
+}
+.I-body .I-content .I-banner .I-title {
+  width: 30%;
+  position: absolute;
+  top: 50%;
+  left: 34%;
+  text-align: center;
+  color: white;
+  margin: 0 auto;
+}
+.I-body .I-content .I-bulletin {
+  width: 95%;
+  margin: 0 auto;
+  margin-top: 20px;
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 15px;
+  background-color: #32435F;
+}
+.I-body .I-content .I-bulletin .I-bulletin1 {
+  padding: 10px;
+  color: var(--back-color);
+}
+.I-body .I-content .I-bulletin .I-bulletin1 h3 {
+  border-bottom: 1px solid black;
+  margin-bottom: 10px;
+}
+.I-body .I-content .I-bulletin .I-bulletin1 li {
+  border-bottom: 0.5px solid black;
+  border-style: dashed;
+}
+.I-body .I-content .I-product {
+  width: 95%;
+  margin: 0 auto;
+  margin-top: 60px;
+}
+.I-body .I-content .I-product .item img {
+  width: 100%;
+  box-shadow: 5px 5px;
+  margin-bottom: 10px;
+}
+.I-body .I-footer {
+  background-color: var(--div1-color);
+  border-top: 0.5px solid black;
+  /******固定footer*******/
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  z-index: 100;
+}
+.I-body .I-footer .I-footer1 {
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 5px;
+}
+.I-body .I-footer .I-footer1 .I-contact {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+.I-body .I-footer .I-footer1 .I-contact li {
+  margin: 10px;
+  background-color: gainsboro;
+}
+.I-body .I-footer .I-footer1 .I-contact li a {
+  display: block;
+  color: black;
+}
+
+/*******Member******/
+.M-content {
+  width: 70%;
+  padding-top: 60px;
+  display: flex;
+  margin: 0 auto;
+  height: 500px;
+}
+@media (max-width: 376px) {
+  .M-content {
+    display: block;
+  }
+}
+.M-content .M-1 {
+  text-align: center;
+  width: 15%;
+  float: left;
+}
+@media (max-width: 376px) {
+  .M-content .M-1 {
+    width: 100%;
+  }
+}
+.M-content .M-1 h4 {
+  font-size: 24px;
+  font-weight: bold;
+}
+.M-content .M-1 ul {
+  margin-top: 10px;
+  background-color: var(--div3-color);
+  padding: 5px;
+}
+@media (max-width: 376px) {
+  .M-content .M-1 ul {
+    display: flex;
+    justify-content: space-around;
+    padding: 0px;
+  }
+}
+.M-content .M-1 ul li {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  color: lightgray;
+}
+.M-content .M-1 ul li a {
+  display: block;
+  color: lightgray;
+  padding: 5px;
+}
+.M-content .M-1 ul li a:hover {
+  background-color: var(--div1-color);
+}
+.M-content .M-2 {
+  margin-left: 100px;
+}
+@media (max-width: 376px) {
+  .M-content .M-2 {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin: auto;
+  }
+}
+.M-content .M-2 .M-2-1 {
+  width: 100%;
+  padding: 50px;
+}
+.M-content .M-2 .M-2-1 button {
+  margin-top: 10px;
+}
+
+.MF-content {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  text-align: center;
+}
+.MF-content form {
+  background-color: var(--div2-color);
+  width: 70%;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 5px 5px;
+}
+.MF-content form h4 {
+  font-size: 24px;
+  font-weight: bold;
+}
+.MF-content form ul {
+  margin-top: 20px;
+}
+.MF-content form ul li {
+  margin-top: 10px;
+}
+
+.F-content {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  text-align: center;
+}
+.F-content form {
+  margin-top: 20px;
+}
+.F-content form h4 {
+  font-size: 20px;
+  font-weight: bold;
+}
+.F-content form textarea {
+  margin-top: 10px;
+  resize: none;
+  width: 300px;
+  height: 100px;
+}/*# sourceMappingURL=Index.css.map */

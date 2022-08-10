@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/Index.css">
+    <title>編輯點位</title>
+</head>
+<body class="I-body">
+    <div class="I-header">
+        <h1><a href="#">&#128664 交 通 通</a></h1>
+        <ul class="I-option">
+            <li><a href="/index">首頁</a></li>
+            <li><a href="/member">會員中心</a></li>
+            <li><a href="/edit">編輯點位</a></li>
+            <li><a href="#">交通通</a></li>
+        </ul>
+    </div>
+   
+    <div class="Ed-content">
+        <div class="Ed-1">
+            <h4>編輯點位</h4>
+        </div>
+        <div class="Ed-2">
+            <div class="Ed-2-1">          
+                <ul class="Ed-ul">  
+                    <li class="Ed-li"><h4>提供你的發現  &#128064</h4> </li>       
+                    <li class="Ed-li">
+                        類別
+                        <select name="editType">
+                            <option>請選擇類別</option>
+                            <option>停車場</option>
+                            <option>測速照相</option>
+                            <option>拖吊場</option>
+                        </select>
+                    </li>
+                    <li class="Ed-li">
+                        城市
+                        <select name="editCity">
+                            <option>請選擇城市</option>
+                            <option>台北市</option>
+                            <option>新北市</option>
+                        </select>
+                    </li>
+                    <li class="Ed-li"> 
+                        <h4>更多敘述</h4>
+                        <textarea name="editText" type="text" placeholder="路段或鄰近座標敘述" style="resize: none;" ></textarea>
+                    
+                    </li>    
+                    <li class="Ed-li">
+                        <h4>圖片支援(選)</h4>
+                        <input type="file" accept="image/*" capture="camera" id="img">
+                    </li>
+                    <li class="Ed-save">
+                        <p><button>儲存</button></p>
+                    </li>
+                </ul>
+            </div>
+            <!--未選擇類別-->
+            {% if  editType == "請選擇類別" %}
+            <div class="Ed-2-1">          
+                <ul class="Ed-ul">  
+                    <li class="Ed-li"><h4>提供你的發現  &#128064</h4> </li>       
+                    <li class="Ed-li">
+                        類別<span style="color: red;font-size: 0.2rem;">尚未選擇</span>
+                        <select>
+                            <option>請選擇類別</option>
+                            <option>停車場</option>
+                            <option>測速照相</option>
+                            <option>拖吊場</option>
+                        </select>
+                    </li>
+                    <li class="Ed-li">
+                        城市
+                        <select>
+                            <option>請選擇城市</option>
+                            <option>台北市</option>
+                            <option>新北市</option>
+                        </select>
+                    </li>
+                    <li class="Ed-li"> 
+                        <h4>更多敘述</h4>
+                        <textarea type="text" placeholder="路段或鄰近座標敘述" style="resize: none;" ></textarea>
+                    
+                    </li>    
+                    <li class="Ed-li">
+                        <h4>圖片支援(選)</h4>
+                        <input type="file" accept="image/*" capture="camera" id="img">
+                    </li>
+                    <li class="Ed-save">
+                        <p><button>儲存</button></p>
+                    </li>
+                </ul>
+            </div>
+            <!--未選擇城市-->
+            {%  else if editCity == "請選擇類別" %}
+            <div class="Ed-2-1">          
+                <ul class="Ed-ul">  
+                    <li class="Ed-li"><h4>提供你的發現  &#128064</h4> </li>       
+                    <li class="Ed-li">
+                        類別
+                        <select>
+                            <option>請選擇類別</option>
+                            <option>停車場</option>
+                            <option>測速照相</option>
+                            <option>拖吊場</option>
+                        </select>
+                    </li>
+                    <li class="Ed-li">
+                        城市<span style="color: red;font-size: 0.2rem;">尚未選擇</span>
+                        <select>
+                            <option>請選擇城市</option>
+                            <option>台北市</option>
+                            <option>新北市</option>
+                        </select>
+                    </li>
+                    <li class="Ed-li"> 
+                        <h4>更多敘述</h4>
+                        <textarea type="text" placeholder="路段或鄰近座標敘述" style="resize: none;" ></textarea>
+                    
+                    </li>    
+                    <li class="Ed-li">
+                        <h4>圖片支援(選)</h4>
+                        <input type="file" accept="image/*" capture="camera" id="img">
+                    </li>
+                    <li class="Ed-save">
+                        <p><button>儲存</button></p>
+                    </li>
+                </ul>
+            </div>
+             <!--都沒選擇-->
+            {%  else if  %}
+            <div class="Ed-2-1">          
+                <ul class="Ed-ul">  
+                    <li class="Ed-li"><h4>提供你的發現  &#128064</h4> </li>       
+                    <li class="Ed-li">
+                        類別<span style="color: red;font-size: 0.2rem;">尚未選擇</span>
+                        <select> 
+                            <option>請選擇類別</option>
+                            <option>停車場</option>
+                            <option>測速照相</option>
+                            <option>拖吊場</option>
+                        </select>
+                    </li>
+                    <li class="Ed-li">
+                        城市<span style="color: red;font-size: 0.2rem;">尚未選擇</span>
+                        <select>
+                            <option>請選擇城市</option>
+                            <option>台北市</option>
+                            <option>新北市</option>
+                        </select>
+                    </li>
+                    <li class="Ed-li"> 
+                        <h4>更多敘述</h4>
+                        <textarea type="text" placeholder="路段或鄰近座標敘述" style="resize: none;" ></textarea>
+                    
+                    </li>    
+                    <li class="Ed-li">
+                        <h4>圖片支援(選)</h4>
+                        <input type="file" accept="image/*" capture="camera" id="img">
+                    </li>
+                    <li class="Ed-save">
+                        <p><button>儲存</button></p>
+                    </li>
+                </ul>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="I-footer">
+        <div class="I-footer1">
+            <h1>聯絡我們</h1>
+            <ul class="I-contact">
+                <li ><a class="IG" href="https://www.instagram.com/">IG</a></li>
+                <li ><a class="FB" href="https://zh-tw.facebook.com/">FB</a></li>
+                <li  class="EM">Trafflow@gmail.com</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

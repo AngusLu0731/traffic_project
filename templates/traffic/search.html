@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://csshake.surge.sh/csshake.min.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/Index.css' %}"> 
+    <title>交通通</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js">
+    </script>
+</head>
+{% block content %}
+<body class="I-body">
+    <div class="I-header">
+        <h1><a href="/index">&#128664<span> 交 通 通</span></a></h1>
+        <ul class="I-option">
+            <li><a href="/index" class="shake-little">&#127968<span class="span-h">回首頁</span></a></li>
+            <li><a href="/member" class="shake-little"><span>會員中心</span></a></li>
+            <li><a href="/edit"class="shake-little" ><span>編輯點位</span></a></li>
+            <li><a href="/gps" class="shake-little"><span>交通通</span></a></li>
+        </ul>
+    </div>
+    <!--STEP 1-->
+    <div class="S-content">
+    {% if fmap != null %}
+    {{ fmap|safe }}
+    {% endif %}
+        <form method='POST'>
+            {% csrf_token %}
+            <span style="font-weight: bold;color: white;"></span>
+            <p class="S-1">STEP 1 :選擇類別</p></span>
+            <select style="margin-top: 10px;" id="searchType" name="searchType">
+            <option value="請選擇類別">請選擇類別</option>
+            <option>停車場</option>
+            <option>測速照相</option>
+            <option>拖吊場</option>
+            </select>    
+            <p><input style="margin-top: 10px;" id="choice" name="choice" type="submit" class="btn btn-primary btn-primary1" value="選擇" /></p>  
+        </form>  
+    </div>
+</body>
+<!--STEP 2-->
+{% if searchType == "停車場" %}
+<form class="S-parking" method='POST'>
+    {% csrf_token %}
+    <span style="font-weight: bold;color: white;">
+    <p style="margin-bottom: 20px; font-size: 20px;">停車場篩選</p>
+    <p class="S-2">STEP 2 :篩選特定OR直接查詢看全部</p>
+    <p>停車場名稱：{{ parkingFilter.form.name }}</p>
+    <p>停車場地址：{{ parkingFilter.form.address }}</p> </span> 
+    <input style="margin-top: 10px;" name="parkingSubmit" type="submit" class="btn btn-primary" value="查詢" />
+</form>
+{% elif searchType == "拖吊場" %}
+<form class="S-parking"method='POST'>
+    {% csrf_token %}
+    <span style="font-weight: bold;;color: white;">
+    <p style="margin-bottom: 20px; font-size: 20px;">拖吊場篩選</p>
+    <p class="S-2">STEP 2 :篩選特定OR直接查詢看全部</p>
+    <p>拖吊場名稱：{{ towingFilter.form.name }}</p>
+    <p>拖吊場地址：{{ towingFilter.form.address }}</p></span>
+    <input name="towingSubmit" type="submit" class="btn btn-primary" value="查詢" />
+</form>
+{% elif searchType == "測速照相" %}
+<form class="S-parking" method='POST'>
+    {% csrf_token %}
+    <span style="font-weight: bold;;color: white;">
+    <p style="margin-bottom: 20px; font-size: 20px;">測速器篩選</p>
+    <p class="S-2">STEP 2 :篩選特定OR直接查詢看全部</p>
+    <p>測速地段：{{ speedLotFilter.form.roadsection }}</p>
+    <p>測速情況：{{ speedLotFilter.form.situation }}</p></span>
+    <input name="speedLotSubmit" type="submit" class="btn btn-primary" value="查詢" />
+</form>
+{% endif %}
+
+<!--STEP 3-->
+
+<!-----------------------------停車場----------------------------->
+{% if "parkingSubmit" in request.POST %}
+<form  class="S-parking" method='POST'>
+    {% csrf_token %}
+    <span style="font-weight: bold;color: white;">
+    <p class="S-2">STEP 2 :進階篩選OR直接查詢看全部</p>
+    <p>停車場名稱：{{ parkingFilter.form.name }}</p>
+    <p>停車場地址：{{ parkingFilter.form.address }} </p></span>
+    <input name="parkingSubmit" type="submit" class="btn btn-primary" value="查詢" />
+</form>
+
+<form class="goGPS" method="get" action="/gps">
+    {% csrf_token %}
+    <input type="hidden" id='endNameInput' name="endPos" value="">
+</form>
+<div class="S-table">
+        <table id="parking_table">
+        <thead class="S-thead">
+            <th class="S-th1">名稱</th>
+            <th class="S-th2">地址</th>
+            <th class="S-th3">電話</th>
+            <th class="S-th4">路線</th>
+        </thead>
+        <tbody>
+            {% for parking in parkingFilter.qs %}
+            <tr>
+                <td class="S-td1 nr"><div><p>{{ parking.name }}</p></div></td>
+                <td><div><p>{{ parking.address }}</p></div></td>
+                <td><div><p>{{ parking.tel }}</p></div></td>
+                <td>
+                    <button id="parking_go" name="Parking_GO" class="S-GO shake-little">&#128694
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        </table>
+    
+</div> 
+<!-----------------------------拖吊場----------------------------->
+{% elif "towingSubmit" in request.POST %}
+<form class="S-parking" method='POST'>
+    {% csrf_token %}
+    <span style="font-weight: bold;;color: white;">
+    <p class="S-2">STEP 2 :進階篩選OR直接查詢看全部</p>
+    <p>拖吊場名稱：{{ towingFilter.form.name }}</p>
+    <p>拖吊場地址：{{ towingFilter.form.address }}</p></span>
+    <input name="towingSubmit" type="submit" class="btn btn-primary" value="查詢" />
+</form>
+<br/>
+<form class="goGPS" method="get" action="/gps">
+    {% csrf_token %}
+    <input type="hidden" id='endNameInput' name="endPos" value="">
+</form>
+<div class="T-table">
+        <table id="towing _table">
+            <thead class="S-thead">
+                <th class="S-th1">名稱</th>
+                <th class="S-th2">地址</th>
+                <th class="S-th3">電話</th>
+                <th class="S-th4">路線</th>
+            </thead>
+        <tbody>
+            {% for towing in towingFilter.qs %}
+            <tr>
+                <td class="S-td1 nr">{{ towing.name }}</td>
+                <td>{{ towing.address }}</td>
+                <td>{{ towing.tel }}</td> 
+                <td>
+                    <button id="towing_go" name="Towing_GO" class="S-GO shake-little">&#128694
+                </td>
+                
+            </tr>
+            {% endfor %}
+        </tbody>
+</table>
+</div>
+<!-----------------------------測速器----------------------------->
+{% elif "speedLotSubmit" in request.POST %}
+<form class="S-parking" method='POST'>
+    {% csrf_token %}
+    <span style="font-weight: bold;;color: white;">
+    <p class="S-2">STEP 2 :進階篩選OR直接查詢看全部</p>
+    <p>測速地段：{{ speedLotFilter.form.roadsection }}</p>
+    <p>測速情況：{{ speedLotFilter.form.situation }}</p></span>
+    <input name="speedLotSubmit" type="submit" class="btn btn-primary" value="查詢" />
+</form>
+<div class="C-table">
+    
+<table>
+    <thead class="S-thead">
+        <th class="S-th1">地段</th>
+        <th class="S-th2">情況</th>
+    </thead>
+    <tbody>
+        {% for speedLot in speedLotFilter.qs %}
+        <tr>
+            <td class="S-td1" >{{ speedLot.roadsection }}</td>
+            <td>{{ speedLot.situation }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endif %}
+{% endblock  %}
+<script>
+    //抓取table資料 for 路線規劃。
+    $(".S-GO").click(function() {
+    var $row = $(this).closest("tr");    // 找到對應的tr
+    var $text = $row.find(".nr").text(); // 抓取tr裡面想要的 cell 資料 
+    document.getElementById('endNameInput').value=$text;
+    $(".goGPS").submit();
+    });
+    // 選擇類別如果值是 ＂請選擇類別＂ 提示 使用者。
+    $(".btn-primary1").click(function(){  
+        var value = document.getElementById('searchType').value;
+        if(value == "請選擇類別"){
+            alert("亲，您尚未選擇類別 ❤"); //提示 使用者
+        }
+    });
+
+</script>
+
+

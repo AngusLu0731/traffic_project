@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="https://csshake.surge.sh/csshake.min.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/Index.css' %}">
+    <title>會員註冊</title>
+</head>
+{% block content %}
+<body class="e-body">
+    <div class="e-content">
+        <h1 class="blink">&#9997 <span>加入我們！</span> </h1>
+        <div class="e-content1">
+            <h4>填寫註冊資料</h4>
+            <div class="e-info">
+                <form method="POST">  
+                    {% csrf_token %} 
+                    <ul>
+                        <li> {{ form.as_p }}</li>
+                    </ul>      
+            </div>
+            <div class="e-info1">
+                <input class="bttn" type="submit" value="送出資料">
+                </form>  
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}
+</html>
